@@ -19,6 +19,26 @@ async function main() {
 
     const stocks = [AAPL]
 
+    function getColor(stock){
+        if(stock === "AAPL"){
+            return 'rgba(61, 161, 61, 0.7)'
+        }
+    }
+    
+    // new Chart(timeChartCanvas.getContext('2d'), {
+    //     type: 'line',
+    //     data: {
+    //         labels: stocks[0].values.map( value => value.datetime),
+    //         datasets: [stocks.map( stock=>({
+    //             label: stock.meta.symbol,
+    //             data: stock.values.map(value => parseFloat(value.high)),
+    //             backgroundColor:getColor(stock.meta.symbol),
+    //             borderColor: getColor(stock.meta.symbol)
+    //         }))
+    //          ]
+    //     }
+    // });
+    
 }
 
 main()
