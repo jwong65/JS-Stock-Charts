@@ -17,7 +17,10 @@ async function main() {
     console.log(AAPL)
 
 
-    const stocks = [AAPL]
+    const { GME, MSFT, DIS, BNTX } = mockData;
+
+    const stocks = [GME, MSFT, DIS, BNTX];
+
 
     function getColor(stock){
         if(stock === "AAPL"){
@@ -26,14 +29,22 @@ async function main() {
     }
     const chart1 = document.getElementById('time-chart').getContext('2d');
     const newChart = new Chart(chart1, {
-        type: 'line',
+        // type: 'line',
+        // datasets:{
+        //     labels :['Red', 'Green'],
+        //     data: [12 , 19],  
+        //     backgroundColor: 'rgb(255, 99, 132)',
+        //     borderColor: 'rgb(255, 99, 132)',
+
+        // }
         data: {
             labels: stocks[0].values.map( value => value.datetime),
             datasets: [stocks.map( stock=>({
                 label: stock.meta.symbol,
                 data: stock.values.map(value => parseFloat(value.high)),
                 backgroundColor:getColor(stock.meta.symbol),
-                borderColor: getColor(stock.meta.symbol)
+                borderColor: getColor(stock.meta.symbol),
+                borderWidth:1
             }))
              ]
         }
