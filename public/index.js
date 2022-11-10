@@ -24,20 +24,20 @@ async function main() {
             return 'rgba(61, 161, 61, 0.7)'
         }
     }
-    
-    // new Chart(timeChartCanvas.getContext('2d'), {
-    //     type: 'line',
-    //     data: {
-    //         labels: stocks[0].values.map( value => value.datetime),
-    //         datasets: [stocks.map( stock=>({
-    //             label: stock.meta.symbol,
-    //             data: stock.values.map(value => parseFloat(value.high)),
-    //             backgroundColor:getColor(stock.meta.symbol),
-    //             borderColor: getColor(stock.meta.symbol)
-    //         }))
-    //          ]
-    //     }
-    // });
+    const chart1 = document.getElementById('time-chart').getContext('2d');
+    const newChart = new Chart(chart1, {
+        type: 'line',
+        data: {
+            labels: stocks[0].values.map( value => value.datetime),
+            datasets: [stocks.map( stock=>({
+                label: stock.meta.symbol,
+                data: stock.values.map(value => parseFloat(value.high)),
+                backgroundColor:getColor(stock.meta.symbol),
+                borderColor: getColor(stock.meta.symbol)
+            }))
+             ]
+        }
+    });
     
 }
 
