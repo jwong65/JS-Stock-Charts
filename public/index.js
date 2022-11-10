@@ -17,7 +17,7 @@ async function main() {
     console.log(AAPL)
 
 
-
+    const stocks = [AAPL]
 
 }
 
