@@ -10,8 +10,8 @@ async function main() {
         //header: Authorization="apikey beeaae5d371b40ff9bae68960148ca7d"
     })
 
-    let stocksResults =await stockResults.json()
-    console.log(stocksResults)
+    let Results =await stockResults.json()
+    console.log(Results)
 
     let AAPL = stocksResults.AAPL
     console.log(AAPL)
