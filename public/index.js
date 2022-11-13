@@ -23,9 +23,23 @@ async function main() {
 
 
     function getColor(stock){
-        if(stock === "AAPL"){
+        // if(stock === "AAPL"){
+        //     return 'rgba(61, 161, 61, 0.7)'
+        // } Was used to test the mockData.
+        if(stock === "GME"){
             return 'rgba(61, 161, 61, 0.7)'
         }
+        if(stock === "MSFT"){
+            return 'rgba(209, 4, 25, 0.7)'
+        }
+        if(stock === "DIS"){
+            return 'rgba(18, 4, 209, 0.7)'
+        }
+        if(stock === "BNTX"){
+            return 'rgba(166, 43, 158, 0.7)'
+        }
+    
+        
     }
     const chart1 = document.getElementById('time-chart').getContext('2d');
     const newChart = new Chart(chart1, {
@@ -35,6 +49,7 @@ async function main() {
         //     data: [12 , 19],  
         //     backgroundColor: 'rgb(255, 99, 132)',
         //     borderColor: 'rgb(255, 99, 132)',
+        //This was used for testing the mockData but I still couldn't get it to show up - just a blank square.
 
         // }
         data: {
@@ -49,7 +64,8 @@ async function main() {
              ]
         }
     });
-    
+    //This is Chart 1, but the CDN link is either broken or not working as it should based on the activity instructions?
+
 }
 
 main()
