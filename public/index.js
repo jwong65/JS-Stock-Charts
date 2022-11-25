@@ -22,6 +22,8 @@ async function main() {
 
     const stocks = [GME, MSFT, DIS, BNTX];
 
+    //This is to help change the dates to be the other way ascending
+    stocks.forEach( stock => stock.values.reverse())
 
     function getColor(stock){
         if(stock === "GME"){
