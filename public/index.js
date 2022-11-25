@@ -29,7 +29,7 @@ async function main() {
         }
     }
 
-    new Chart(timeChartCanvas.getContext('2d'), {
+     new Chart(timeChartCanvas.getContext('2d'), {
         type: 'line',
         data: {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
