@@ -22,7 +22,7 @@ async function main() {
 
     const stocks = [GME, MSFT, DIS, BNTX];
 
-    //This is to help change the dates to be the other way ascending
+    //This is to help change the dates to be the other way a
     stocks.forEach( stock => stock.values.reverse())
 
     function getColor(stock){
@@ -57,6 +57,7 @@ async function main() {
             //}]
         }
     });
+
     new Chart(highestPriceChartCanvas.getContext('2d'),{
         type: 'bar',
         data:{
@@ -66,10 +67,10 @@ async function main() {
                 data: stock.values.map(value=> parseFloat(value.high)),
                 backgroundColor: getColor(stock.meta.symbol),
                 borderColor: getColor(stock.meta.symbol)
-            
+
 
         }))}
-        
+
     })
    
      
