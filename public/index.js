@@ -11,10 +11,10 @@ async function main() {
     })
 
     
-    let stocksResults =await stockResults.json()
-    console.log(stocksResults)
+    let results =await stockResults.json()
+    console.log(results)
 
-    let AAPL = stocksResults.AAPL
+    let AAPL = results.AAPL
     console.log(AAPL)
 
 
