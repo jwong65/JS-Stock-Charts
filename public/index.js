@@ -10,6 +10,7 @@ async function main() {
         //header: Authorization="apikey beeaae5d371b40ff9bae68960148ca7d"
     })
 
+    
     let stocksResults =await stockResults.json()
     console.log(stocksResults)
 
@@ -27,29 +28,43 @@ async function main() {
             return 'rgba(61, 161, 61, 0.7)'
         }
     }
-    const chart1 = document.getElementById('time-chart').getContext('2d');
-    const newChart = new Chart(chart1, {
-        // type: 'line',
-        // datasets:{
-        //     labels :['Red', 'Green'],
-        //     data: [12 , 19],  
-        //     backgroundColor: 'rgb(255, 99, 132)',
-        //     borderColor: 'rgb(255, 99, 132)',
 
-        // }
+    new Chart(timeChartCanvas.getContext('2d'), {
+        type: 'line',
         data: {
-            labels: stocks[0].values.map( value => value.datetime),
-            datasets: [stocks.map( stock=>({
-                label: stock.meta.symbol,
-                data: stock.values.map(value => parseFloat(value.high)),
-                backgroundColor:getColor(stock.meta.symbol),
-                borderColor: getColor(stock.meta.symbol),
-                borderWidth:1
-            }))
-             ]
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor:  'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)'
+            }]
         }
     });
-    
+   
+     
+//    const chart1 = document.getElementById('time-chart').getContext('2d');
+//     const newChart = new Chart(chart1, {
+//         // type: 'line',
+//         // datasets:{
+//         //     labels :['Red', 'Green'],
+//         //     data: [12 , 19],  
+//         //     backgroundColor: 'rgb(255, 99, 132)',
+//         //     borderColor: 'rgb(255, 99, 132)',
+
+//         // }
+//         data: {
+//             labels: stocks[0].values.map( value => value.datetime),
+//             datasets: [stocks.map( stock=>({
+//                 label: stock.meta.symbol,
+//                 data: stock.values.map(value => parseFloat(value.high)),
+//                 backgroundColor:getColor(stock.meta.symbol),
+//                 borderColor: getColor(stock.meta.symbol),
+//                 borderWidth:1
+//             }))
+//              ]
+//         }
+//     });
 }
 
 main()
