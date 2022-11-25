@@ -57,6 +57,20 @@ async function main() {
             //}]
         }
     });
+    new Chart(highestPriceChartCanvas.getContext('2d'),{
+        type: 'bar',
+        data:{
+            labels: stocks[0].values.map(value => value.datetime),
+            datasets: stocks.map( stock=>({
+                label: stock.meta.symbol,
+                data: stock.values.map(value=> parseFloat(value.high)),
+                backgroundColor: getColor(stock.meta.symbol),
+                borderColor: getColor(stock.meta.symbol)
+            
+
+        }))}
+        
+    })
    
      
 //    const chart1 = document.getElementById('time-chart').getContext('2d');
