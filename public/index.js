@@ -32,13 +32,16 @@ async function main() {
      new Chart(timeChartCanvas.getContext('2d'), {
         type: 'line',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor:  'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)'
-            }]
+            labels: stocks[0].values.map(value => value.datetime),
+            datasets: stocks.map( stock=>({
+                label: stock.meta.symbol,
+                data: stock.values.map(value=> parseFloat(value.high))
+            }))
+                //label: stocks.meta.symbol,
+                //data: stocks.values.map(value=>parseFloat(value.high)),
+                //backgroundColor:  'rgba(255, 99, 132, 0.2)',
+                //borderColor: 'rgba(255, 99, 132, 1)'
+            //}]
         }
     });
    
