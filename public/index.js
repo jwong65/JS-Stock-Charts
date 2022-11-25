@@ -45,7 +45,8 @@ async function main() {
             datasets: stocks.map( stock=>({
                 label: stock.meta.symbol,
                 data: stock.values.map(value=> parseFloat(value.high)),
-                backgroundColor: getColor(stock.meta.symbol)
+                backgroundColor: getColor(stock.meta.symbol),
+                borderColor: getColor(stock.meta.symbol)
             }))
                 //label: stocks.meta.symbol,
                 //data: stocks.values.map(value=>parseFloat(value.high)),
