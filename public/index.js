@@ -42,7 +42,7 @@ async function main() {
     new Chart(highestPriceChartCanvas.getContext('2d'),{
         type: 'bar',
         data:{
-            labels: 'Highset stock price',
+            labels: stocks.map(stock=> stock.meta.symbol),
             //For label instead of date time it has to be different stocks
             datasets: stocks.map( stock=>({
                 label: stock.meta.symbol,
