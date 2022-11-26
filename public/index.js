@@ -42,21 +42,35 @@ async function main() {
     new Chart(highestPriceChartCanvas.getContext('2d'),{
         type: 'bar',
         data:{
+            
+        //For label instead of date time it has to be different stocks
             labels: stocks.map(stock=> stock.meta.symbol),
-            //For label instead of date time it has to be different stocks
-            datasets: stocks.map( stock=>({
-                //This label is the one below. Don't need .map because it's only
-                label: stock.meta.symbol,
-                //Data set has to be one array
-                data: stocks.map(stock=>(getHighestPrice(stock.values))) ,
-                //data: stock.values.map(value=> parseFloat(value.high)),
-                backgroundColor: getColor(stock.meta.symbol),
-                borderColor: getColor(stock.meta.symbol)
+            //This dataset doesn't need .map because it's one data set not multiple
+            datasets: [{
+                label: 'Highest',
+                backgroundColor: stocks.map(stock=>(
+                    getColor(stock.meta.symbol)
+                )),
+                borderColor: stocks.map(stock=>(
+                    getColor(stock.meta.symbol)
+                )),
+                data: stocks.map(stock => (
+                    getHighestPrice(stock.values)
+                ))
+            }]}
+        //     datasets: stocks.map( stock=>({
+        //         //This label is the one below. Don't need .map because it's only
+        //         label: stock.meta.symbol,
+        //         //Data set has to be one array
+        //         data: stocks.map(stock=>(getHighestPrice(stock.values))) ,
+        //         //data: stock.values.map(value=> parseFloat(value.high)),
+        //         backgroundColor: getColor(stock.meta.symbol),
+        //         borderColor: getColor(stock.meta.symbol)
 
 
-        }))}
+        // }))}
 
-    })
+        })
 
     //Helper function to help find highest price
     function getHighestPrice(values){
