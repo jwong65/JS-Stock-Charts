@@ -32,7 +32,7 @@ async function main() {
             labels: stocks[0].values.map(value => value.datetime),
             datasets: stocks.map( stock=>({
                 label: stock.meta.symbol,
-                data: stock.values.map(value=> parseFloat(value.high)),
+                data: stock.values.map(stock=> getHighestPrice(stock.values)),
                 backgroundColor: getColor(stock.meta.symbol),
                 borderColor: getColor(stock.meta.symbol)
             }))
@@ -45,7 +45,7 @@ async function main() {
             labels: stocks[0].values.map(value => value.datetime),
             datasets: stocks.map( stock=>({
                 label: stock.meta.symbol,
-                data: stock.values.map(value=> parseFloat(value.high)),
+                data: stock.map(value=> parseFloat(value.high)),
                 backgroundColor: getColor(stock.meta.symbol),
                 borderColor: getColor(stock.meta.symbol)
 
@@ -53,5 +53,17 @@ async function main() {
         }))}
 
     })
+
+    //Helper function to help find highest price
+    function getHighestPrice(stock){
+        //Need to store price in a variable so it can be returned.
+        let price
+        stock.forEach(value=>{
+            if (parseFloat(value.high)> price){
+                price = value.high
+            }
+        })
+        return price
+    }
 }
 main()
