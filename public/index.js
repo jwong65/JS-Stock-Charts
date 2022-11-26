@@ -32,7 +32,7 @@ async function main() {
             labels: stocks[0].values.map(value => value.datetime),
             datasets: stocks.map( stock=>({
                 label: stock.meta.symbol,
-                data: stock.values.map(stock=> getHighestPrice(stock.values)),
+                data: stock.values.map(value=> parseFloat(value.high)),
                 backgroundColor: getColor(stock.meta.symbol),
                 borderColor: getColor(stock.meta.symbol)
             }))
@@ -42,10 +42,11 @@ async function main() {
     new Chart(highestPriceChartCanvas.getContext('2d'),{
         type: 'bar',
         data:{
-            labels: stocks[0].values.map(value => value.datetime),
+            labels: 'Highset stock price',
+            //For label instead of date time it has to be different stocks
             datasets: stocks.map( stock=>({
                 label: stock.meta.symbol,
-                data: stock.map(value=> parseFloat(value.high)),
+                data: stock.values.map(value=> parseFloat(value.high)),
                 backgroundColor: getColor(stock.meta.symbol),
                 borderColor: getColor(stock.meta.symbol)
 
